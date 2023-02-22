@@ -12,10 +12,10 @@
         <h2>Detail Product</h2>
         <form>
             <label for="pnama">Product Name:</label>
-            <input type="text" id="pnama" name="pnama"><br><br>
+            <input type="text" id="pnama" name="pnama" pattern=".{6,50}" required><br><br>
     
             <label for="pcategory">Product Category:</label>
-            <select id="pilihan" name="pilihan">
+            <select id="pilihan" name="pilihan" required>
                 <option value="">--Pilih--</option>
                 <option value="pilihan1">Pilihan 1</option>
                 <option value="pilihan2">Pilihan 2</option>
@@ -24,21 +24,20 @@
             </select><br><br>
             
             <label for="pfrehness">Product Frehness:</label><br>
-            <input type="checkbox" id="brandNew" name="pfrehness">Brand New<br>
-            <input type="checkbox" id="secondHank" name="pfrehness">Second Hank<br>
-            <input type="checkbox" id="refurbished" name="pfrehness">Refurbished<br><br>
+            <input type="checkbox" id="brandNew" name="pfrehness" required>Brand New<br>
+            <input type="checkbox" id="secondHank" name="pfrehness" required>Second Hank<br>
+            <input type="checkbox" id="refurbished" name="pfrehness" required>Refurbished<br><br>
 
             <label for="iproduct">Image of Product</label>
-            <input type="file" id="iproduct" name="iproduct"><br><br>
+            <input type="file" id="iproduct" name="iproduct" required><br><br>
             
             <label for="adescription">Additional Description </label><br><br>
-            <textarea name="" id="" cols="30" rows="10"></textarea><br><br>
+            <textarea name="" id="" cols="30" rows="10" required></textarea><br><br>
 
             <label for="pprice">Product Price</label><br>
-            <input type="text" id="pprice" name="pprice" value="$100"><br><br>
+            <input type="number" id="pprice" name="pprice" value="$100" required><br><br>
 
-            <label for="submit"></label>
-            <input type="submit" id="submit" name="submit"><br><br>
+            <button>Create Account</button>
     </div>
 </body>
 </html>
