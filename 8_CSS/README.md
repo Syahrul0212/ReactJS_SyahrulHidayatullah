@@ -1,0 +1,4 @@
+# 3 hal penting dalam mempelajari css
+## 1. Perlu memahami konsep dasar CSS, seperti sintaksis CSS, selector, property, value, dan lain-lain. Juga perlu memahami cara CSS digunakan dalam suatu halaman web dan bagaimana cara menghubungkannya dengan HTML.
+## 2. CSS memungkinkan kita untuk menentukan gaya visual dari elemen HTML. Oleh karena itu, perlu mempelajari berbagai selector CSS, seperti class, id, tag, dan kombinasi dari semuanya. Juga perlu memahami berbagai property CSS, seperti warna, ukuran font, margin, padding, dan lain-lain.
+## 3. Perlu mempelajari responsif web design untuk membuat halaman web yang dapat menyesuaikan ukuran layar, sehingga dapat diakses dengan mudah dari perangkat apapun, baik itu desktop, tablet, maupun ponsel. Perlu memahami konsep media query dan cara membuat tata letak yang responsif untuk halaman web.
