@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+.main-image {
+    align-items: center;
+    
+}
+
+
+.main-section-dp {
+    padding-left: 600px;
+}
+
+.main-create {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    font-weight: 300px;
+    font-size: 20px;
+}
