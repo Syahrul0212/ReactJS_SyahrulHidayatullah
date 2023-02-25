@@ -1,0 +1,7 @@
+# Bootstrap adalah kerangka kerja front-end yang populer digunakan dalam pengembangan situs web. Berikut adalah tiga poin penting dalam belajar Bootstrap:
+
+## 1. Responsif: Bootstrap dirancang untuk menciptakan tampilan situs web yang responsif, artinya situs web yang dapat menyesuaikan tampilannya dengan ukuran layar yang berbeda, mulai dari layar desktop hingga layar ponsel. Bootstrap menyediakan grid system yang memungkinkan pengembang untuk membagi tata letak situs web ke dalam kolom dan baris yang responsif.
+
+## 2. Komponen siap pakai: Bootstrap menyediakan komponen-komponen siap pakai yang dapat digunakan oleh pengembang untuk mempercepat pengembangan situs web. Beberapa komponen umum yang disediakan oleh Bootstrap adalah navigasi, formulir, tombol, kartu, dan lain-lain. Dengan menggunakan komponen-komponen ini, pengembang dapat menghemat waktu dalam pengembangan situs web.
+
+## 3. Dokumentasi yang lengkap: Bootstrap menyediakan dokumentasi yang lengkap dan mudah dipahami, yang memudahkan pengembang untuk memahami cara kerja Bootstrap dan cara menggunakannya. Dokumentasi ini mencakup penjelasan tentang grid system, komponen-komponen, gaya-gaya, dan lain-lain. Selain itu, Bootstrap juga menyediakan contoh-contoh kode yang dapat digunakan oleh pengembang sebagai referensi dalam pengembangan situs web.
