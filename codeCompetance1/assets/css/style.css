@@ -1,7 +1,32 @@
 a {
     color: gray !important;
+    text-decoration: none !important;
 }
 
 a:hover {
-    color: green !important;
+    color: #71c55d !important;
+}
+
+.text-welcome {
+    margin-top: 100px !important;
+    color: #71c55d;
+    font-family: "Philosopher", sans-serif;
+}
+
+.conten-main-bg {
+    height: calc(90vh);
+    background: url(/codeCompetance1/assets/img/wave\ \(1\).svg) bottom no-repeat;
+}
+
+.background-color {
+    background-color: #e4f4e1;
+}
+
+.info p {
+    display: inline-block;
+}
+
+.footer {
+    height: calc(4vh);
+    background: url(/codeCompetance1/assets/img/wave\ \(2\).svg);
 }
