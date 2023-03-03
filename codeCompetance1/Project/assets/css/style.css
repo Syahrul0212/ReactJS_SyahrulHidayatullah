@@ -15,7 +15,7 @@ a:hover {
 
 .conten-main-bg {
     height: calc(90vh);
-    background: url(/codeCompetance1/assets/img/wave\ \(1\).svg) bottom no-repeat;
+    background: url(/codeCompetance1/Project/assets/img/wave\ \(1\).svg) bottom no-repeat;
 }
 
 .background-color {
@@ -28,5 +28,5 @@ a:hover {
 
 .footer {
     height: calc(4vh);
-    background: url(/codeCompetance1/assets/img/wave\ \(2\).svg);
+    background: url(/codeCompetance1/Project/assets/img/wave\ \(2\).svg);
 }
