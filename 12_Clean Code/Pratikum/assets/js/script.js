@@ -20,11 +20,7 @@ function addUser() {
     i++
     }
 
-    console.log(prouductName);
-    console.log(prouductCategory);
-    console.log(imageCategory);
-    console.log(additionalDescription);
-    console.log(prouductPrice);
+    console.log(`${prouductName}, ${prouductCategory}, ${imageCategory}, ${additionalDescription}, ${prouductPrice}`)
 
     const table = document.getElementById("table");
     const newRow = document.createElement("tr");
