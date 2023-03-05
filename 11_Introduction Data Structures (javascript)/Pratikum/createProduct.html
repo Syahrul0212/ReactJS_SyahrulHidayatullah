@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body class="bg-light">
@@ -51,7 +50,7 @@
             <h4 class="mb-3"><strong>Detail Product</strong></h4>
             <hr>
           </div>
-            <form class="form-submit needs-validation" >
+            <div class="form-submit needs-validation">
               <div class="container justify-content-center col-lg-5">
                 <div class="col-lg-12">
                   <label for="pName" class="form-label">Product Name</label>
@@ -84,15 +83,15 @@
                 <div class="my-4">
                   <h4 class="mb-2">Product Freshness</h4>
                   <div class="form-check">
-                    <input id="brand" name="productfreshness" type="radio" class="form-check-input" >
+                    <input id="brand" name="productfreshness" type="radio" class="form-check-input" value="Brand New">
                     <label class="form-check-label" for="brand">Brand New</label>
                   </div>
                   <div class="form-check">
-                    <input id="second" name="productfreshness" type="radio" class="form-check-input" >
+                    <input id="second" name="productfreshness" type="radio" class="form-check-input" value="Second Hand">
                     <label class="form-check-label" for="second">Second Hand</label>
                   </div>
                   <div class="form-check">
-                    <input id="refufbished" name="productfreshness" type="radio" class="form-check-input" >
+                    <input id="refufbished" name="productfreshness" type="radio" class="form-check-input" value="Refufbished">
                     <label class="form-check-label" for="refufbished">Refufbished</label>
                   </div>
                 </div>
@@ -112,13 +111,32 @@
                     Valid first name is required.
                   </div>
                 </div>
-                <div class="pt-4 mb-5">
-                  <button class="w-100 btn btn-primary btn-lg" type="submit" id="submit-button">Submit</button>
+                <div class="pt-4 mb-4">
+                  <button class="w-100 btn btn-primary btn-lg" onclick="addUser()">Submit</button>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </div> 
         </main>
+      </div>
+
+        <div class="container">
+          <div class="pt-5 pb-3">
+            <h1 class="text-center">List Product</h1>
+          </div>
+          <table class="myTable table mb-5" id="table">
+            <thead class="table-dark table-striped">
+              <tr>
+                <td>Product Name</td>
+                <td>Product Category</td>
+                <td>Image of Product</td>
+                <td>Product Freshness</td>
+                <td>Additional Description</td>
+                <td>Product Price</td>
+              </tr>
+            </thead>
+          </table>
+        </div>
 
     <script src="./assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

@@ -1,0 +1,7 @@
+# Tiga poin penting dalam struktur data JavaScript adalah sebagai berikut:
+
+## Array: Array adalah tipe data struktur yang memungkinkan kita menyimpan data dalam urutan tertentu. Dalam JavaScript, array dapat diisi dengan berbagai tipe data seperti string, angka, objek, dll. Array memiliki sejumlah metode yang memungkinkan kita melakukan operasi seperti menambahkan atau menghapus elemen, mengurutkan elemen, atau mencari elemen tertentu.
+
+## Object: Object adalah struktur data kompleks yang memungkinkan kita menyimpan data dalam bentuk pasangan key-value. Key dalam object harus unik dan value dapat berupa tipe data apa saja, seperti string, angka, array, objek, dll. Object dapat digunakan untuk merepresentasikan objek dunia nyata atau untuk membuat struktur data yang kompleks.
+
+## Linked List: Linked List adalah struktur data linear yang terdiri dari serangkaian simpul. Setiap simpul terdiri dari data dan pointer ke simpul berikutnya dalam linked list. Linked list berguna ketika kita perlu memanipulasi data secara dinamis, seperti menambah atau menghapus elemen, karena kita hanya perlu memperbarui pointer ke simpul berikutnya, bukan seluruh struktur data seperti pada array. Namun, linked list tidak cocok untuk operasi pencarian elemen acak, karena kita harus melakukan traversal dari awal hingga elemen yang diinginkan.
