@@ -89,3 +89,10 @@ Modul CSS : menggunakan modul CSS namun CSSnya akan ke scop ke satu elemen dan t
 
 
 
+# Berikut adalah tiga poin penting dalam React fundamental:
+
+## Komponen: React adalah sebuah library berbasis komponen. Komponen adalah bagian-bagian kecil yang membentuk aplikasi React. Komponen dapat digunakan kembali (reusable) dan dibuat dari kode JavaScript dan JSX. Komponen dapat menerima properti (props) dan memiliki state, serta memiliki method hidup (lifecycle methods) yang memungkinkan interaksi dengan aplikasi.
+
+## Virtual DOM: React menggunakan konsep Virtual DOM (Document Object Model) untuk mengoptimalkan pengalaman pengguna. Virtual DOM adalah representasi dari struktur DOM dalam memori. Setiap perubahan pada tampilan UI diterapkan pada Virtual DOM terlebih dahulu, dan kemudian React membandingkan Virtual DOM baru dengan Virtual DOM lama untuk menentukan bagian mana yang harus diperbarui. Hal ini memungkinkan aplikasi React bekerja lebih cepat dan efisien dalam mengupdate tampilan UI.
+
+## State Management: React menggunakan state untuk menyimpan data yang berubah dalam sebuah komponen. State hanya dapat diubah melalui setState() method, dan setiap kali state berubah, React akan secara otomatis memperbarui tampilan UI. Untuk manajemen state yang lebih kompleks, React memiliki opsi seperti Redux dan Context API. Dengan state management yang baik, pengembang dapat membuat aplikasi React yang dinamis dan interaktif.

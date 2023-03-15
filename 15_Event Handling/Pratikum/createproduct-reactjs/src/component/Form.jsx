@@ -7,6 +7,14 @@ function Form() {
     const randomNumber = Math.floor(Math.random() * 100);
     console.log("Random number:", randomNumber);
   };
+
+  // const handleInputChange = (event) => {
+  //   const value = event.target.value;
+
+  //   if (value.length <= 10) {
+  //     setProductName(value);
+  //   }
+  // };
  
   return (
     <div>
