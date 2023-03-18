@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 function Form(props) {
-
   const [formData, setFormData] = useState({
     prName: "",
     additionaldescription: "",
     pprice1: "",
+    pCategory: "",
   });
 
   const [products, setProducts] = useState([]);
-  const [productFreshness, setProductFreshness] = useState("");
 
   useEffect(() => {
     alert("Welcome Bang!!");
@@ -22,16 +21,14 @@ function Form(props) {
       prName: formData.prName,
       additionaldescription: formData.additionaldescription,
       pprice1: formData.pprice1,
-      pCategory: formData.pCategory,
-      productfreshness: formData.productfreshness
+      pCategory: formData.pCategory // tambahkan properti kategori produk
     };
     setProducts([...products, newProduct]);
     setFormData({
       prName: "",
       additionaldescription: "",
       pprice1: "",
-      pCategory: "",
-      productfreshness: ""
+      pCategory: "" // tambahkan state kategori produk
     });
   };
 
@@ -41,10 +38,6 @@ function Form(props) {
       ...prevState,
       [id]: value,
     }));
-  };
-
-  const handleProductFreshnessChange = (event) => {
-    setProductFreshness(event.target.value);
   };
 
   const handleChange = (event) => {
@@ -108,33 +101,6 @@ function Form(props) {
               </label>
               <input type="file" className="form-control btn btn-primary" name="iCategory" id="imageCategory" />
               <div className="invalid-feedback">Please select a valid.</div>
-            </div>
-            <div className="my-4">
-              <h4 className="mb-2">Product Freshness</h4>
-              <div className="form-check">
-                <input 
-                  id="brand" 
-                  name="productfreshness" 
-                  type="radio" 
-                  className="form-check-input" 
-                  checked={productFreshness === "Brand New"}
-                  onChange={handleProductFreshnessChange}/>
-                <label className="form-check-label" htmlFor="brand">
-                  Brand New
-                </label>
-              </div>
-              <div className="form-check">
-                <input id="second" name="productfreshness" type="radio" className="form-check-input" />
-                <label className="form-check-label" htmlFor="second">
-                  Second Hand
-                </label>
-              </div>
-              <div className="form-check">
-                <input id="refufbished" name="productfreshness" type="radio" className="form-check-input" />
-                <label className="form-check-label" htmlFor="refufbished">
-                  Refufbished
-                </label>
-              </div>
             </div>
             <div className="col-lg-12">
               <label htmlFor="additionaldescription" className="form-label">
