@@ -1,8 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 function Form() {
-  
-
   const handleClick = (e) => {
     e.preventDefault();
     const randomNumber = Math.floor(Math.random() * 100);
@@ -17,7 +15,7 @@ function Form() {
       setProductName(value);
     }
   };
- 
+
   return (
     <div>
       <div className="container justify-content-center">
@@ -33,15 +31,7 @@ function Form() {
               <label htmlFor="pName" className="form-label">
                 Product Name
               </label>
-              <input 
-                type="text" 
-                className="form-control" 
-                id="pName"
-                defaultValue=""
-                required=""
-                value={productName}
-                onChange={handleInputChange} 
-              />
+              <input type="text" className="form-control" id="pName" defaultValue="" required="" value={productName} onChange={handleInputChange} />
               <div className="invalid-feedback">Valid first name is required.</div>
             </div>
             <div className="col-lg-12">

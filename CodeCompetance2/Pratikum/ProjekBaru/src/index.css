@@ -1,0 +1,36 @@
+a {
+    color: gray !important;
+    text-decoration: none !important;
+}
+
+/* body {
+    background-color: #a8de9a;
+} */
+
+a:hover {
+    color: #71c55d !important;
+}
+
+.text-welcome {
+    margin-top: 100px !important;
+    color: #71c55d;
+    font-family: "Philosopher", sans-serif;
+}
+
+.conten-main-bg {
+    height: calc(90vh);
+    background: url(../public/wave1.svg) bottom no-repeat !important;
+}
+
+.background-color {
+    background-color: #e4f4e1;
+}
+
+.info p {
+    display: inline-block;
+}
+
+.footer {
+    height: calc(4vh);
+    background: url(../public/wave2.svg);
+}
