@@ -8,11 +8,16 @@ function Combine() {
   const [subject, setSubject] = useState();
   const [message, setMessage] = useState();
 
-  console.log(username);
-  console.log(email);
-  console.log(subject);
-  console.log(message);
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Show an alert message with the form values
+    alert(`Username: ${username}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`);
+    // Clear the form fields
+    setUsername("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
   return (
     <section id="contact" className="background-color">
       <ContactUs />
@@ -48,15 +53,15 @@ function Combine() {
           </div>
         </div>
         <div className="col-lg-3 col-sm-5 pe-5">
-          <form action="" id="form-submit">
+          <form action="" id="form-submit" onSubmit={handleSubmit}>
             <div className="form-group">
               <input className="form-control" type="text" placeholder="Username" name="username" id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
             </div>
             <div className="form-group mt-3">
-              <input className="form-control" type="email" placeholder="Your Email" name="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+              <input className="form-control" type="email" placeholder="Your Email" name="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
             </div>
             <div className="form-group mt-3">
-              <input className="form-control" type="text" placeholder="Subject" name="subject" id="subject" value={subject} onChange={(event) => setSubject(event.target.value)}/>
+              <input className="form-control" type="text" placeholder="Subject" name="subject" id="subject" value={subject} onChange={(event) => setSubject(event.target.value)} />
             </div>
             <div className="form-group mt-3">
               <textarea className="form-control" name="message" rows={5} placeholder="Message" id="message" value={message} onChange={(event) => setMessage(event.target.value)} />
@@ -68,7 +73,6 @@ function Combine() {
         </div>
       </div>
     </section>
-    
   );
 }
 
