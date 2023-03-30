@@ -1,12 +1,10 @@
-import { Provider } from "react-redux";
-import store from "./confiq/redux/Store";
-import Counter from "./views/Counter/Counter.view";
+import CreateProduct from "./organism/createProduct";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Counter/>
-    </Provider>
+    <div>
+      <CreateProduct/>
+    </div>
   );
 }
 
