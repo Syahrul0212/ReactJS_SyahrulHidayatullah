@@ -1,0 +1,9 @@
+## API (Application Programming Interface) adalah cara bagi program-program komputer untuk berinteraksi satu sama lain. Dalam pengembangan web, REST (Representational State Transfer) API adalah salah satu jenis API yang paling populer. RESTful API memungkinkan aplikasi web untuk berkomunikasi dengan sumber daya dan layanan lain di web, seperti basis data atau layanan pihak ketiga.
+
+## Berikut adalah tiga poin penting tentang RESTful API:
+
+### Resource-based: RESTful API berfokus pada sumber daya (resources) yang diwakili oleh URI (Uniform Resource Identifiers). URI ini adalah tautan unik yang mengidentifikasi sumber daya yang dimaksud. Dalam RESTful API, setiap tindakan (seperti membaca, menambah, mengubah, atau menghapus sumber daya) dilakukan dengan mengirim permintaan HTTP ke URI yang sesuai.
+
+### Stateless: RESTful API adalah stateless, artinya tidak menyimpan informasi status (state) tentang permintaan sebelumnya. Ini berarti setiap permintaan HTTP harus berisi semua informasi yang diperlukan untuk memproses permintaan, termasuk informasi pengautentikasian dan otorisasi. Server tidak menyimpan informasi session tentang permintaan sebelumnya, sehingga setiap permintaan dianggap sebagai permintaan baru.
+
+### CRUD Operations: RESTful API sering digunakan untuk menjalankan operasi CRUD (Create, Read, Update, Delete) pada sumber daya. Operasi-create digunakan untuk membuat sumber daya baru, operasi-read digunakan untuk membaca sumber daya, operasi-update digunakan untuk memperbarui sumber daya yang ada, dan operasi-delete digunakan untuk menghapus sumber daya. Dalam RESTful API, setiap operasi CRUD dilakukan dengan mengirim permintaan HTTP yang sesuai ke URI yang sesuai.
