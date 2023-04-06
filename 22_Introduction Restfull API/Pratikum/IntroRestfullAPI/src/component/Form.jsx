@@ -2,27 +2,34 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import rootReducer from "../confiq/rootReducer";
 import { useSelector } from "react-redux";
+import { addProduct, deleteProduct, getProduct } from "../confiq/Redux/Product/productThunk";
 
 function FormNew() {
-  // const [products, setProducts] = useState([]);
   const radios = ["Brand New", "Second Hand", "Refufbished"];
   const productState = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  const productType = useSelector((state) => state.type);
 
   useEffect(() => {
     alert("Welcome Bang!!");
   }, []);
 
-  const handleDelete = (index) => {
-    console.log(index);
-    let updatedProducts = [...productState]
-    if (window.confirm("Yakin Bro!!")) {
-      updatedProducts = updatedProducts.filter((product, i) => i !== index);
-      dispatch(rootReducer.actions.update(updatedProducts));
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+
+  useEffect(() => {
+    if (productType === deleteProduct.fulfilled.type) {
+      dispatch(getProduct());
+      alert("yakin bangg");
     }
-  };
+
+    if (productType === addProduct.fulfilled.type) {
+      dispatch(getProduct());
+      alert("Add Success");
+    }
+  }, [productType]);
 
   const SignupSchema = Yup.object().shape({
     prName: Yup.string().min(2, "Too Short!").max(10, "Too Long!").required("Required"),
@@ -35,7 +42,6 @@ function FormNew() {
 
   const formik = useFormik({
     initialValues: {
-      no: 0,
       prName: "",
       pCategory: "",
       imageCategory: "",
@@ -44,13 +50,16 @@ function FormNew() {
       pprice: "",
     },
     validationSchema: SignupSchema,
-    onSubmit: (values, { setValues }) => {
-      alert(`prName: ${values.prName}\npCategory: ${values.pCategory}\nimageCategory: ${values.imageCategory}\nproductFreshness: ${values.productFreshness}\nadditionaldescription: ${values.additionaldescription}\npprice: ${values.pprice}`);
-      setValues({ ...values, no: productState.length + 1 });
-      // setProducts([...products, values]);
-      dispatch(rootReducer.actions.add([...productState,values]));
+    onSubmit: (values) => {
+      dispatch(
+        addProduct({
+          ...values,
+        })
+      );
     },
   });
+
+  console.log(formik.values);
 
   return (
     <div>
@@ -160,7 +169,7 @@ function FormNew() {
                   <td>{product.additionaldescription}</td>
                   <td>$ {product.pprice}</td>
                   <td>
-                    <button className="btn btn-danger" onClick={() => handleDelete(index)}>
+                    <button className="btn btn-danger" onClick={() => dispatch(deleteProduct(product.no))}>
                       Delete
                     </button>
                     <button className="btn btn-warning">Edit</button>

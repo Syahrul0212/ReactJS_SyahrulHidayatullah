@@ -12,8 +12,6 @@ REST kepanjangan dari Representational State Transfer. Rest sendiri merupakan ar
 
 JSON kepanjangan dari JavaScript Object Notation. JSON merupakan format file berbasis teks yang umumnya digunakan dalam proses pertukaran data antara server dan klien.
 
-##
-
 ## 4. Open API
 
 Merupakan sebuah API yang dapat diakses secara publik atau terbuka yang dapat digunakan secara bebas sesuai dengan kebutuhan kita.

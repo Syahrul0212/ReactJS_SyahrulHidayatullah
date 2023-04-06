@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { retrieveProduct } from "./Redux/Product/productThunk";
+import { getProduct, deleteProduct, addProduct } from "./Redux/Product/productThunk";
 
 const initialState = {
-  products: [
-    {
-      retrieveProductsLoading: false,
-      retrieveProductsError: undefined,
-    },
-  ],
+  products: [],
+  type: '',
 };
 
 const rootReducer = createSlice({
@@ -16,26 +12,26 @@ const rootReducer = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(retrieveProduct.pending, (state, action) => {
-        return {
-          ...state,
-          retrieveProductsLoading: true,
-          retrieveProductsError: undefined,
-        };
-      })
-      .addCase(retrieveProduct.fulfilled, (state, action) => {
+      .addCase(getProduct.fulfilled, (state, action) => {
         return {
           ...state,
           products: action.payload,
-          retrieveProductsLoading: false,
-          retrieveProductsError: undefined,
+          type: action.type,
         };
       })
-      .addCase(retrieveProduct.rejected, (state, action) => {
+
+      .addCase(deleteProduct.fulfilled, (state, action) => {
         return {
           ...state,
-          retrieveProductsLoading: false,
-          retrieveProductsError: action.payload,
+          products: state.products.filter((item) => item.id !== action.payload.id),
+          type: action.type,
+        }
+      })
+
+      .addCase(addProduct.fulfilled, (state, action) => {
+        return {
+          ...state, 
+          type: action.type,
         };
       });
   },
