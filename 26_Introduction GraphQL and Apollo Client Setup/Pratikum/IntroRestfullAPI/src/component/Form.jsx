@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addProduct, deleteProduct, getProduct } from "../confiq/Redux/Product/productThunk";
+import { gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 function FormNew() {
   const radios = ["Brand New", "Second Hand", "Refufbished"];
@@ -18,6 +20,73 @@ function FormNew() {
   useEffect(() => {
     dispatch(getProduct());
   }, []);
+
+const Retrive_Product_Quary = gql`
+  query Product {
+    Product {
+      additionaldescription
+      imageCategory
+      pCategory
+      pprice
+      prName
+      productFreshness
+    }
+  }
+`;
+
+const {
+  loading: loadingProduct,
+  error: errorProduct,
+  data: dataProduct,
+} = useQuery(Retrive_Product_Quary);
+
+// const ADD_PRODUCT_QUERY = gql`
+// mutation ADD_PRODUCT_QUERY(
+//   $additionaldescription: String!
+//   $imageCategory: String!
+//   $pCategory: String!
+//   $pprice: int!
+//   $prName: String!
+//   $productFreshness: String!
+// ) {
+//   insert_products_one(
+//     object: {
+//       additionaldescription:  $additionaldescription
+//       imageCategory:  $imageCategory
+//       pCategory:  $pCategory
+//       pprice: $pprice
+//       prName:  $prName
+//       productFreshness: $productFreshness
+//     }
+//   ) {
+//     id
+//   }
+// }
+// `;
+// const [
+//   addProductById,
+//   {
+//     loading: loadingAddProduct,
+//     error: errorAddProduct,
+//     data: dataAddProduct,
+//   },
+// ] = useMutation(ADD_PRODUCT_QUERY);
+
+// const DELETE_PRODUCT_QUERY = gql`
+// mutation DELETE_PRODUCT_BY_ID($id: Int!) {
+//   delete_products_by_pk(id: $id) {
+//     id
+//   }
+// }
+// `;
+// const [
+//   DeleteProductById,
+//   {
+//     loading: loadingDeleteProduct,
+//     error: errorDeleteProduct,
+//     data: dataDeleteProduct,
+//   },
+// ] = useMutation(DELETE_PRODUCT_QUERY);
 
   useEffect(() => {
     if (productType === deleteProduct.fulfilled.type) {
@@ -159,7 +228,7 @@ function FormNew() {
               </tr>
             </thead>
             <tbody>
-              {productState.map((product, index) => (
+              {dataProduct?.Product.map((product, index) => (
                 <tr key={index}>
                   <td>{product.no}</td>
                   <td>{product.prName}</td>

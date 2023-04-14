@@ -1,13 +1,29 @@
 import React from "react";
 import "./Style.css";
 import { Navbar } from "../component";
+import { gql, useQuery } from "@apollo/client";
 
 function LandingPage() {
+  const Retrive_Product_Quary = gql`
+    query Product {
+      Product {
+        additionaldescription
+        imageCategory
+        pCategory
+        pprice
+        prName
+        productFreshness
+      }
+    }
+  `;
+
+  const { loading: loadingProduct, error: errorProduct, data: dataProduct } = useQuery(Retrive_Product_Quary);
+
   return (
     <div>
       <>
         {/* ======= Header ======= */}
-       <Navbar/>
+        <Navbar />
 
         {/* ======= Hero Section ======= */}
         <section id="hero" className="d-flex align-items-center">
@@ -33,6 +49,47 @@ function LandingPage() {
           </div>
         </section>
         {/* End Hero */}
+
+        {/* ======= Card ======= */}
+        <section className="product">
+          <div className="container">
+            <h1>Product List</h1>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              {dataProduct?.Product.map((product, index) => (
+                <div className="col " key={index}>
+                  <div className="card shadow-sm">
+                    <svg className="bd-placeholder-img card-img-top" width="100%" height={225} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#55595c" />
+                    </svg>
+                    <div className="card-body">
+                      <p className="card-text">{product.prName}</p>
+                      <p className="card-text">{product.pCategory}</p>
+                      <p className="card-text">{product.productFreshness}</p>
+                      <p className="card-text">{product.additionaldescription}</p>
+                      <p className="card-text">$ {product.pprice}</p>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div className="btn-group">
+                          <button type="button" className="btn btn-sm btn-outline-secondary">
+                            Detail View
+                          </button>
+                        </div>
+                        <small className="text-muted">9 mins</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="loadmore d-grid gap-2 d-md-flex justify-content-md-end">
+              <button className="btn btn-primary" type="button">
+                Load More ...
+              </button>
+            </div>
+          </div>
+        </section>
+        {/* End Card */}
+
         {/* ======= Footer ======= */}
         <footer id="footer">
           <div className="footer-newsletter">
