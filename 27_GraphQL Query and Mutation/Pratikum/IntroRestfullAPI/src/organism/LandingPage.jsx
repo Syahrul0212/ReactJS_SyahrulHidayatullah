@@ -2,11 +2,13 @@ import React from "react";
 import "./Style.css";
 import { Navbar } from "../component";
 import { gql, useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate(); 
   const Retrive_Product_Quary = gql`
   query Product {
-    Product {
+    Product (limit:3) {
       additionaldescription
       imageCategory
       pCategory
@@ -87,8 +89,9 @@ const {
                 ))
               )}
             </div>
+            <br />
             <div className="loadmore d-grid gap-2 d-md-flex justify-content-md-end">
-              <button className="btn btn-primary" type="button">
+              <button className="btn btn-primary" type="button" onClick={()=>{navigate("/AllProduct")}}>
                 Load More ...
               </button>
             </div>

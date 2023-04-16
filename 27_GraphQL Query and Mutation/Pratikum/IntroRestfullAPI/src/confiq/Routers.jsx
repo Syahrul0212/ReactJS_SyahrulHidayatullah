@@ -2,6 +2,7 @@ import CreateProduct from "../organism/CreateProduct";
 import LandingPage from "../organism/LandingPage";
 import Login from "../component/login";
 import Register from "../component/register";
+import { AllProduct } from "../organism/AllProduct";
 
 const Routers = [
   {
@@ -19,6 +20,10 @@ const Routers = [
   {
     path: "/Register",
     element: <Register/>,
+  },
+  {
+    path: "/AllProduct",
+    element: <AllProduct/>,
   },
 ];
 
