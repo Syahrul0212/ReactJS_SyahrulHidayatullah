@@ -1,104 +1,63 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { addProduct, deleteProduct, getProduct } from "../confiq/Redux/Product/productThunk";
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 
 function FormNew() {
   const radios = ["Brand New", "Second Hand", "Refufbished"];
-  const productState = useSelector((state) => state.products);
-  const dispatch = useDispatch();
-  const productType = useSelector((state) => state.type);
+  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     alert("Welcome Bang!!");
   }, []);
 
-  useEffect(() => {
-    dispatch(getProduct());
-  }, []);
+  const Retrive_Product_Quary = gql`
+    query Product {
+      Product {
+        additionaldescription
+        id
+        imageCategory
+        pCategory
+        pprice
+        prName
+        productFreshness
+      }
+    }
+  `;
 
-const Retrive_Product_Quary = gql`
-  query Product {
-    Product {
-      additionaldescription
-      imageCategory
-      pCategory
-      pprice
-      prName
-      productFreshness
+  const { loading: loadingProduct, error: errorProduct, data: dataProduct } = useQuery(Retrive_Product_Quary);
+
+  const ADD_PRODUCT_QUERY = gql`
+    mutation AddProduct($additionaldescription: String = "", $imageCategory: String = "", $pCategory: String = "", $pprice: numeric = "", $prName: String = "", $productFreshness: String = "") {
+      insert_Product_one(object: { additionaldescription: $additionaldescription, imageCategory: $imageCategory, pCategory: $pCategory, pprice: $pprice, prName: $prName, productFreshness: $productFreshness }) {
+        id
+      }
+    }
+  `;
+  const [addProductById, { loading: loadingAddProduct, error: errorAddProduct, data: dataAddProduct }] = useMutation(ADD_PRODUCT_QUERY);
+
+  const DELETE_PRODUCT_QUERY = gql`
+  mutation DELETE_PRODUCT_BY_ID($id: uuid!) {
+    delete_Product_by_pk(id: $id) {
+      id
     }
   }
-`;
+  `;
+  const [
+    DeleteProductById,
+    {
+      loading: loadingDeleteProduct,
+      error: errorDeleteProduct,
+      data: dataDeleteProduct,
+    },
+  ] = useMutation(DELETE_PRODUCT_QUERY);
 
-const {
-  loading: loadingProduct,
-  error: errorProduct,
-  data: dataProduct,
-} = useQuery(Retrive_Product_Quary);
-
-// const ADD_PRODUCT_QUERY = gql`
-// mutation ADD_PRODUCT_QUERY(
-//   $additionaldescription: String!
-//   $imageCategory: String!
-//   $pCategory: String!
-//   $pprice: int!
-//   $prName: String!
-//   $productFreshness: String!
-// ) {
-//   insert_products_one(
-//     object: {
-//       additionaldescription:  $additionaldescription
-//       imageCategory:  $imageCategory
-//       pCategory:  $pCategory
-//       pprice: $pprice
-//       prName:  $prName
-//       productFreshness: $productFreshness
-//     }
-//   ) {
-//     id
-//   }
-// }
-// `;
-// const [
-//   addProductById,
-//   {
-//     loading: loadingAddProduct,
-//     error: errorAddProduct,
-//     data: dataAddProduct,
-//   },
-// ] = useMutation(ADD_PRODUCT_QUERY);
-
-// const DELETE_PRODUCT_QUERY = gql`
-// mutation DELETE_PRODUCT_BY_ID($id: Int!) {
-//   delete_products_by_pk(id: $id) {
-//     id
-//   }
-// }
-// `;
-// const [
-//   DeleteProductById,
-//   {
-//     loading: loadingDeleteProduct,
-//     error: errorDeleteProduct,
-//     data: dataDeleteProduct,
-//   },
-// ] = useMutation(DELETE_PRODUCT_QUERY);
-
-  useEffect(() => {
-    if (productType === deleteProduct.fulfilled.type) {
-      dispatch(getProduct());
-      alert("yakin bangg");
-    }
-
-    if (productType === addProduct.fulfilled.type) {
-      dispatch(getProduct());
-      alert("Add Success");
-    }
-  }, [productType]);
+  const handleDeleteProduct = (id) => {
+    DeleteProductById({
+      variables:{id:id}
+    })
+  }
 
   const SignupSchema = Yup.object().shape({
     prName: Yup.string().min(2, "Too Short!").max(10, "Too Long!").required("Required"),
@@ -118,15 +77,60 @@ const {
       additionaldescription: "",
       pprice: "",
     },
+    
     validationSchema: SignupSchema,
     onSubmit: (values) => {
-      dispatch(
-        addProduct({
-          ...values,
-        })
-      );
+      addProductById({
+        variables: {
+          prName: values.prName,
+          pCategory: values.pCategory,
+          imageCategory: values.imageCategory,
+          productFreshness: values.productFreshness,
+          additionaldescription: values.additionaldescription,
+          pprice: values.pprice,
+        },
+      });
     },
   });
+
+  const handleEdit = (product) => {
+    formik.setValues({ 
+      id: product.id,
+      prName: product.prName,
+      pCategory: product.pCategory,
+      imageCategory: product.imageCategory,
+      productFreshness: product.productFreshness,
+      additionaldescription: product.additionaldescription,
+      pprice: product.pprice,
+    })
+    setIsEdit(true);
+  }
+  
+  const handleUpdate = (newValues, event) => {
+    event.preventDefault()
+    updateProductById({
+      variables:{
+        id: newValues.id, additionaldescription: newValues.additionaldescription, imageCategory: newValues.imageCategory, pCategory: newValues.pCategory, pprice: newValues.pprice, productFreshness: newValues.productFreshness, prName: newValues.prName
+      }
+    })
+    setIsEdit(false)
+  }
+
+  const mutationUpdateProduct = gql`
+  mutation UpdateProductMutation($id: uuid!, $additionaldescription: String!, $imageCategory: String!, $pCategory: String!, $pprice: numeric!, $productFreshness: String!, $prName: String!) {
+    update_Product_by_pk(pk_columns: {id: $id}, _set: {additionaldescription: $additionaldescription, imageCategory: $imageCategory, pCategory: $pCategory, pprice: $pprice, productFreshness: $productFreshness, prName: $prName}) {
+      id
+    }
+  }`
+
+  const [
+    updateProductById,
+    {
+      loading: loadingUpdateProduct,
+      error: errorUpdateProduct,
+      data: dataUpdateProduct,
+    },
+  ] = useMutation(mutationUpdateProduct);
 
   console.log(formik.values);
 
@@ -139,7 +143,7 @@ const {
           </h4>
           <hr />
         </div>
-        <form className="form-submit needs-validation" onSubmit={formik.handleSubmit}>
+        <form className="form-submit needs-validation" onSubmit={isEdit ? (event)=>handleUpdate(formik.values, event) : formik.handleSubmit}>
           <div className="col-lg-12">
             <label htmlFor="prName" className="pName form-label">
               Product Name
@@ -198,7 +202,7 @@ const {
           </div>
           <div className="pt-4 mb-5">
             <button className="w-100 btn btn-primary btn-lg" type="submit" id="submit-button" data-testid="bttn">
-              Submit
+              {isEdit ? "edit" : "submit"}
             </button>
           </div>
         </form>
@@ -238,10 +242,10 @@ const {
                   <td>{product.additionaldescription}</td>
                   <td>$ {product.pprice}</td>
                   <td>
-                    <button className="btn btn-danger" onClick={() => dispatch(deleteProduct(product.no))}>
+                    <button className="btn btn-danger" onClick={() => handleDeleteProduct(product.id)}>
                       Delete
                     </button>
-                    <button className="btn btn-warning">Edit</button>
+                    <button className="btn btn-warning" onClick={() => handleEdit(product)}>Edit</button>
                   </td>
                 </tr>
               ))}
