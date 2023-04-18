@@ -1,7 +1,7 @@
 import CreateProduct from "../organism/CreateProduct";
 import LandingPage from "../organism/LandingPage";
-import Login from "../component/login";
-import Register from "../component/register";
+import Login from "../component/Login";
+import Register from "../component/Register";
 import { AllProduct } from "../organism/AllProduct";
 
 const Routers = [
